@@ -14,5 +14,7 @@ public class TestController {
     }
 
     @GetMapping("/{id}")        // path variable (매개변수) 필요함을 의미
-    public String testController
+    public String testControllerWithPathVariable(@PathVariable(required = false) int id) {
+        return "Get Method with Path Virable! " + id;
+    }
 }
