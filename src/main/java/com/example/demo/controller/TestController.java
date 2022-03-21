@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("test")
@@ -15,6 +16,11 @@ public class TestController {
 
     @GetMapping("/{id}")        // path variable (매개변수) 필요함을 의미
     public String testControllerWithPathVariable(@PathVariable(required = false) int id) {
-        return "Get Method with Path Virable! " + id;
+        return "Get Method with Path Variable! " + id;
+    }
+
+    @GetMapping("/testRequestParam")
+    public String testControllerWithRequestParam(@RequestParam(required = false) int id) {
+        return "Get Method with Path Variable (another way)! " + id;
     }
 }
