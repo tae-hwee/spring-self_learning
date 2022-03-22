@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
+import com.example.demo.dto.TestRequestBodyDTO;
 
 @RestController
 @RequestMapping("test")
@@ -22,5 +24,11 @@ public class TestController {
     @GetMapping("/testRequestParam")
     public String testControllerWithRequestParam(@RequestParam(required = false) int id) {
         return "Get Method with Path Variable (another way)! " + id;
+    }
+
+    @GetMapping("/testRequestBody")
+    public String testControllerWithRequestBody(@RequestBody TestRequestBodyDTO testRequestBodyDTO) {
+        return "Get Method with Request Body DTO! ID is: " +
+                testRequestBodyDTO.getId() + " and the Message is: " + testRequestBodyDTO.getMessage();
     }
 }
