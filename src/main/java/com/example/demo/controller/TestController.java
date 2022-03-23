@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,5 +44,14 @@ public class TestController {
         TestResponseDTO<String> response = TestResponseDTO.<String>builder().data(list).build();
 
         return response;
+    }
+
+    @GetMapping("/testResponseEntity")
+    public ResponseEntity<?> testControllerWithResponseEntity() {
+        List<String> list = new ArrayList<>();
+        list.add("My first GET Method using Response Entity. You may get 400 http status!");
+        TestResponseDTO<String> response = TestResponseDTO.<String>builder().data(list).build();
+
+        return ResponseEntity.badRequest().body(response);
     }
 }
